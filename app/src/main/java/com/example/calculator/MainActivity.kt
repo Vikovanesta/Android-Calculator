@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import java.text.DecimalFormat
 import java.util.Stack
 
 class MainActivity : ComponentActivity() {
@@ -43,28 +44,33 @@ class MainActivity : ComponentActivity() {
 
     fun calculate(view: View) {
         val panel = findViewById<TextView>(R.id.panel)
-        val expression = getExpression(panel.text.toString())
-        val stack = Stack<Int>()
 
-        for (token in expression) {
-            if (token !in "+-*/") {
-                stack.push(token.toInt())
-            } else {
-                val operand2 = stack.pop()
-                val operand1 = stack.pop()
-                when (token) {
-                    "+" -> stack.push(operand1 + operand2)
-                    "-" -> stack.push(operand1 - operand2)
-                    "*" -> stack.push(operand1 * operand2)
-                    "/" -> stack.push(operand1 / operand2)
-                }
-            }
+        if (panel.text.last() == ' ') {
+            panel.text = panel.text.dropLastWhile { !it.isDigit() }
         }
 
+        val expression = getExpression(panel.text.toString())
+        val stack = Stack<Double>()
 
-//        panel.text = operand1.toString()
-        panel.text = stack.pop().toString()
-//        panel.text = expression.toString()
+        try {
+            for (token in expression) {
+                if (token !in "+-*/") {
+                    stack.push(token.toDouble())
+                } else {
+                    val operand2 = stack.pop()
+                    val operand1 = stack.pop()
+                    when (token) {
+                        "+" -> stack.push(operand1 + operand2)
+                        "-" -> stack.push(operand1 - operand2)
+                        "*" -> stack.push(operand1 * operand2)
+                        "/" -> stack.push(operand1 / operand2)
+                    }
+                }
+            }
+    //        panel.text = operand1.toString()
+            panel.text = DecimalFormat("0.######").format(stack.pop()).toString()
+    //        panel.text = expression.toString()
+        } catch (_: Exception){ }
     }
 
     private fun getExpression(expression: String): List<String> {
@@ -78,8 +84,7 @@ class MainActivity : ComponentActivity() {
             "+" to 1,
             "-" to 1,
             "*" to 2,
-            "/" to 2,
-            "^" to 3
+            "/" to 2
         )
         val postfixExpression = mutableListOf<String>()
         val stack = Stack<String>()
@@ -88,15 +93,8 @@ class MainActivity : ComponentActivity() {
         for (token in infixExpression) {
             when {
                 token.contains("[0-9]".toRegex()) -> postfixExpression.add(token)
-                token == "(" -> stack.push(token)
-                token == ")" -> {
-                    while (!stack.isEmpty() && stack.peek() != "(") {
-                        postfixExpression.add(stack.pop())
-                    }
-                    stack.pop() // Pop the '('
-                }
                 else -> {
-                    while (!stack.isEmpty() && stack.peek() != "(" &&
+                    while (!stack.isEmpty() &&
                         operatorPrecedence.getValue(token) <= operatorPrecedence.getOrDefault(stack.peek(), 0)
                     ) {
                         postfixExpression.add(stack.pop())
@@ -107,13 +105,8 @@ class MainActivity : ComponentActivity() {
         }
 
         while (!stack.isEmpty()) {
-            if (stack.peek() == "(") {
-                throw IllegalArgumentException("Mismatched parentheses in the infix expression")
-            }
             postfixExpression.add(stack.pop())
         }
-
         return postfixExpression
     }
 }
-
