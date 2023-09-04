@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="viewEnd"
-        android:text="4 + 500"
+        android:text="5 + 5 x 2"
         android:textSize="24sp"
         android:gravity="bottom"
         android:background="@color/purple_200"
@@ -110,16 +110,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_2"
-        android:text="C"
+        android:text="AC"
         android:onClick="InputNilai"/>
 
     <Button
-        android:id="@+id/btn_del"
+        android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_2"
         android:layout_toEndOf="@+id/btn_0"
-        android:text="del"
+        android:text="DEL"
         android:onClick="InputNilai"/>
 
     <Button
@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_2"
-        android:layout_toEndOf="@+id/btn_del"
+        android:layout_toEndOf="@+id/btn_delete"
         android:text="+"
         android:onClick="InputNilai"/>
 
@@ -141,7 +141,7 @@
         android:onClick="InputNilai"/>
 
     <Button
-        android:id="@+id/btn_multi"
+        android:id="@+id/btn_multiply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_7"
@@ -150,7 +150,7 @@
         android:onClick="InputNilai"/>
 
     <Button
-        android:id="@+id/btn_div"
+        android:id="@+id/btn_divide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/panel"
