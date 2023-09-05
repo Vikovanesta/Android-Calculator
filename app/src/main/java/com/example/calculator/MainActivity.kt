@@ -16,43 +16,46 @@ class MainActivity : ComponentActivity() {
 
     fun InputNilai(view: View) {
         val panel = findViewById<TextView>(R.id.panel)
-        when((view as Button).text.toString()){
-            "AC"-> {
-                panel.text = ""
-            }
-            "DEL"-> {
-                if (panel.text.last() == ' ') {
+        try {
+            when((view as Button).text.toString()){
+                "AC"-> {
+                    panel.text = ""
+                }
+                "DEL"-> {
+                    if (panel.text.last() == ' ') {
 //                    panel.text = panel.text.dropLast(3)
-                    panel.text = panel.text.dropLastWhile { !it.isDigit() }
-                } else {
-                    panel.text = panel.text.dropLast(1)
+                        panel.text = panel.text.dropLastWhile { !it.isDigit() }
+                    } else {
+                        panel.text = panel.text.dropLast(1)
+                    }
+                }
+                "+", "-", "/", "x"-> {
+                    if (panel.text.last() == ' ') {
+                        panel.text = panel.text.dropLastWhile { !it.isDigit() }
+                        panel.text = "${panel.text} ${view.text} "
+                    } else {
+                        panel.text = "${panel.text} ${view.text} "
+                    }
+                }
+                else->{
+                    panel.text = "${panel.text}${view.text}"
                 }
             }
-            "+", "-", "/", "x"-> {
-                if (panel.text.last() == ' ') {
-                    panel.text = panel.text.dropLastWhile { !it.isDigit() }
-                    panel.text = "${panel.text} ${view.text} "
-                } else {
-                    panel.text = "${panel.text} ${view.text} "
-                }
-            }
-            else->{
-                panel.text = "${panel.text}${view.text}"
-            }
-        }
+        } catch (_: Exception) { }
+
     }
 
     fun calculate(view: View) {
         val panel = findViewById<TextView>(R.id.panel)
 
-        if (panel.text.last() == ' ') {
-            panel.text = panel.text.dropLastWhile { !it.isDigit() }
-        }
-
-        val expression = getExpression(panel.text.toString())
-        val stack = Stack<Double>()
-
         try {
+            if (panel.text.last() == ' ') {
+                panel.text = panel.text.dropLastWhile { !it.isDigit() }
+            }
+
+            val expression = getExpression(panel.text.toString())
+            val stack = Stack<Double>()
+
             for (token in expression) {
                 if (token !in "+-*/") {
                     stack.push(token.toDouble())
