@@ -3,166 +3,248 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="#2F3035"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/panel"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/row1"
         android:layout_marginBottom="16dp"
         android:textAlignment="viewEnd"
-        android:text="5 + 5 x 2"
-        android:textSize="24sp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="50sp"
         android:gravity="bottom"
-        android:background="@color/purple_200"
-        tools:ignore="RtlCompat" />
+        tools:ignore="RtlCompat"/>
 
-    <Button
-        android:id="@+id/btn_7"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/panel"
-        android:text="7"
-        android:onClick="InputNilai"/>
+        android:orientation="horizontal"
+        android:layout_above="@+id/row2">
 
-    <Button
-        android:id="@+id/btn_8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/panel"
-        android:layout_toEndOf="@+id/btn_7"
-        android:text="8"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AC"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF"/>
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="DEL"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF" />
+        <Button
+            android:id="@+id/btn_divide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="/"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_9"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/panel"
-        android:layout_toEndOf="@+id/btn_8"
-        android:text="9"
-        android:onClick="InputNilai"/>
+        android:orientation="horizontal"
+        android:layout_above="@+id/row3">
 
-    <Button
-        android:id="@+id/btn_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_7"
-        android:text="4"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="7"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200" />
 
-    <Button
-        android:id="@+id/btn_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_7"
-        android:layout_toEndOf="@+id/btn_4"
-        android:text="5"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200" />
 
-    <Button
-        android:id="@+id/btn_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_7"
-        android:layout_toEndOf="@+id/btn_5"
-        android:text="6"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="9"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
 
-    <Button
-        android:id="@+id/btn_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_4"
-        android:text="1"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_multiply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="x"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF"/>
 
-    <Button
-        android:id="@+id/btn_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_4"
-        android:layout_toEndOf="@+id/btn_1"
-        android:text="2"
-        android:onClick="InputNilai"/>
 
-    <Button
-        android:id="@+id/btn_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_4"
-        android:layout_toEndOf="@+id/btn_2"
-        android:text="3"
-        android:onClick="InputNilai"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_0"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_2"
-        android:layout_alignStart="@+id/btn_2"
-        android:text="0"
-        android:onClick="InputNilai"/>
+        android:orientation="horizontal"
+        android:layout_above="@+id/row4">
 
-    <Button
-        android:id="@+id/btn_clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_2"
-        android:text="AC"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_2"
-        android:layout_toEndOf="@+id/btn_0"
-        android:text="DEL"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
 
-    <Button
-        android:id="@+id/btn_plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_2"
-        android:layout_toEndOf="@+id/btn_delete"
-        android:text="+"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="6"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
 
-    <Button
-        android:id="@+id/btn_minus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_4"
-        android:layout_toEndOf="@+id/btn_3"
-        android:text="-"
-        android:onClick="InputNilai"/>
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF"/>
 
-    <Button
-        android:id="@+id/btn_multiply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_7"
-        android:layout_toEndOf="@+id/btn_6"
-        android:text="x"
-        android:onClick="InputNilai"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_divide"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/row4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/panel"
-        android:layout_toEndOf="@+id/btn_9"
-        android:text="/"
-        android:onClick="InputNilai"/>
+        android:orientation="horizontal"
+        android:layout_above="@+id/row5">
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
+
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="#974EEF"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_0"
-        android:text="="
-        android:onClick="calculate"/>
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_dot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/buttonMargin"
+            android:layout_weight="1.5"
+            android:text="."
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
+
+        <Button
+            android:id="@+id/btn_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/buttonMargin"
+            android:layout_weight="1.5"
+            android:text="0"
+            android:textSize="@dimen/buttonSize"
+            android:onClick="InputNilai"
+            android:backgroundTint="@color/purple_200"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="="
+            android:textSize="@dimen/buttonSize"
+            android:onClick="calculate"
+            android:backgroundTint="#974EEF"/>
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

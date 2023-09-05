@@ -70,7 +70,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-    //        panel.text = operand1.toString()
             panel.text = DecimalFormat("0.######").format(stack.pop()).toString()
     //        panel.text = expression.toString()
         } catch (_: Exception){ }
